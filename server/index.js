@@ -16,6 +16,8 @@ server.listen(PORT, () => {
     console.log(`Server connected to port = ${PORT}`);
 });
 
+const __dirname = path.resolve();
+
 app.use(
     cors({
         origin:"http://localhost:5173",
