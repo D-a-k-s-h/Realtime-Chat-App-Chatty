@@ -19,7 +19,7 @@ server.listen(PORT, () => {
 
 app.use(
     cors({
-        origin:"http://localhost:5173",
+        origin:"https://realtime-chat-app-chatty-li7x.onrender.com",
         credentials:true
     })
 )

@@ -162,7 +162,7 @@ exports.resetPasswordToken = async(req,res) => {
         await User.findOneAndUpdate({email:email},{token:token,resetPasswordExpires:Date.now() + 5*60*1000},{new:true});
 
         //create url
-        const url = `http://localhost:3000/reset-password/${token}`
+        const url = `https://realtime-chat-app-chatty-li7x.onrender.com/reset-password/${token}`
 
         //send mail to user containing url for reseting password
         mailSender(email,"Password reset link",`click on link to reset password -> ${url}`);

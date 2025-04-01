@@ -2,7 +2,7 @@ import { setSocket } from "../slices/AuthSlice";
 import { setOnlineUsers } from "../slices/UsersSlice";
 import { io } from "socket.io-client";
 
-const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:4000" : "/";
+const BASE_URL = import.meta.env.MODE === "development" ? "https://realtime-chat-app-chatty-li7x.onrender.com" : "/";
 
 export const connectSocket = (dispatch,getState) => {
     const {user} = getState().auth;
