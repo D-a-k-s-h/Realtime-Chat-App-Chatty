@@ -31,6 +31,9 @@ app.use(cookieParser());
 if(process.env.NODE_ENV === "production"){
     app.use(express.static(path.join(__dirname,'../frontend/dist')));
 
+    app.use('/api/v1/auth',auth);
+    app.use('/api/v1/messages',messageRoutes);
+
     app.get("*",(req,res) => {
         res.sendFile(path.join(__dirname,"../frontend","dist","index.html"));
     })
