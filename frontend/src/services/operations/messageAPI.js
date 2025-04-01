@@ -30,7 +30,7 @@ export function getMessages(receiverId,token){
 
             console.log("RESPONSE WHILE FETCHING MESSAGES -> ",response);
             result = response?.data?.data
-            toast.success("Messages Fetched Successfully")
+            //toast.success("Messages Fetched Successfully")
 
         } catch(error){
             console.log("ERROR WHILE FETCHING MESSAGES -> ",error);
@@ -63,7 +63,7 @@ export function getAllUsers(token){
 
             console.log("RESPONSE WHILE FETCHING USERS -> ",response);
             result = response?.data?.data;
-            toast.success("Users Fetched Successfully");
+            //toast.success("Users Fetched Successfully");
 
         } catch(error){
             console.log("ERROR WHILE FETCHING USERS -> ",error);
@@ -94,7 +94,7 @@ export function getUserDetails(userId,token){
             
             result = response?.data?.data;
             console.log("FETCH USERS DETAILS RESPONSE -> ",response);
-            toast.success("Users details fetched successfully");
+            //toast.success("Users details fetched successfully");
 
         } catch(error){
             console.log("ERROR WHILE FETCHING USERS DETAILS -> ",error);

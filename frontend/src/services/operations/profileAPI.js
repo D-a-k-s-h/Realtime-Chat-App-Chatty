@@ -26,7 +26,7 @@ export function updateProfilePic(formData,token){
 
             console.log("UPDATING PICTURE RESPONSE -> ",response);
 
-            toast.success("Profile picture updated successfully");
+            //toast.success("Profile picture updated successfully");
 
             dispatch(setUser(response?.data?.data));
             localStorage.setItem("user",response?.data?.data);
