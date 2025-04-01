@@ -55,16 +55,18 @@ export function getAllUsers(token){
                 }
             )
 
-            if(!response.data.success){
-                throw new Error(response?.data?.message);
-            }
+            console.log("GET_ALL_USERS_API -> ",GET_ALL_USERS_API);
+
+            // if(!response.data.success){
+            //     throw new Error(response?.data?.message);
+            // }
 
             console.log("RESPONSE WHILE FETCHING USERS -> ",response);
             result = response?.data?.data;
             toast.success("Users Fetched Successfully");
 
         } catch(error){
-            console.log("ERROR WHILE FETCHING MESSAGES -> ",error);
+            console.log("ERROR WHILE FETCHING USERS -> ",error);
             toast.error(error?.response?.data?.message);
         }
         toast.dismiss(toastId);
