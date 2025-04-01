@@ -12,6 +12,6 @@ export const profileEndPoints = {
 export const messagesEndPoints = {
     GET_MESSAGES_API: BASE_URL + '/messages/:id',
     GET_ALL_USERS_API: BASE_URL + '/messages/allusers',
-    GET_USER_DETAILS_API: BASE_URL + '/messages/getuserdetails',
+    GET_USER_DETAILS_API: BASE_URL + '/messages/user-details',
     SEND_MESSAGES_API: BASE_URL + '/messages/send/:id'
 }

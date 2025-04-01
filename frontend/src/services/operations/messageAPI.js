@@ -16,9 +16,9 @@ export function getMessages(receiverId,token){
         try{
             //In GET requests bodyData remains null therefore we send data in url only
             const response = await apiConnector(
-                "GET",
-                `${GET_MESSAGES_API}?receiverId=${receiverId}`,
-                null,
+                "POST",
+                `${GET_MESSAGES_API}`,
+                {receiverId},
                 {
                     Authorization:`Bearer ${token}`
                 }
@@ -47,7 +47,7 @@ export function getAllUsers(token){
         let result = [];
         try{
             const response = await apiConnector(
-                "GET",
+                "POST",
                 GET_ALL_USERS_API,
                 null,
                 {
@@ -80,9 +80,9 @@ export function getUserDetails(userId,token){
         const toastId = toast.loading("Loading...");
         try{
             const response = await apiConnector(
-                "POST",
-                GET_USER_DETAILS_API,
-                {userId},
+                "GET",
+                `${GET_USER_DETAILS_API}?userId=${userId}`,
+                null,
                 {
                     Authorization: `Bearer ${token}`
                 }
