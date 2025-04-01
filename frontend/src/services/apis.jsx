@@ -1,4 +1,4 @@
-const BASE_URL = 'https://realtime-chat-app-chatty-li7x.onrender.com/api/v1';
+const BASE_URL = '/api/v1';
 
 export const endpoints = {
     SIGNUP_API : BASE_URL + '/auth/signup',

@@ -57,9 +57,9 @@ export function getAllUsers(token){
 
             console.log("GET_ALL_USERS_API -> ",GET_ALL_USERS_API);
 
-            // if(!response.data.success){
-            //     throw new Error(response?.data?.message);
-            // }
+            if(!response.data.success){
+                throw new Error(response?.data?.message);
+            }
 
             console.log("RESPONSE WHILE FETCHING USERS -> ",response);
             result = response?.data?.data;
