@@ -1,4 +1,4 @@
-const BASE_URL = import.meta.env.MODE === "development" ? 'http://localhost:4000/api/v1' : '/api/v1';
+const BASE_URL = 'https://realtime-chat-app-chatty-li7x.onrender.com/api/v1';
 
 export const endpoints = {
     SIGNUP_API : BASE_URL + '/auth/signup',
@@ -12,6 +12,6 @@ export const profileEndPoints = {
 export const messagesEndPoints = {
     GET_MESSAGES_API: BASE_URL + '/messages/:id',
     GET_ALL_USERS_API: BASE_URL + '/messages/allusers',
-    GET_USER_DETAILS_API: BASE_URL + '/messages/getuserdetails',
+    GET_USER_DETAILS_API: BASE_URL + '/messages/user-details',
     SEND_MESSAGES_API: BASE_URL + '/messages/send/:id'
 }
