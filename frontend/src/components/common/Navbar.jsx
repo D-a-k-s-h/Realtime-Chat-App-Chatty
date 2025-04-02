@@ -18,7 +18,7 @@ const Navbar = () => {
   const [isVisible,setIsVisible] = useState(false);
 
   return (
-    <div className='h-14 border-b grid navbar navbar-center'>
+    <div className='h-14 border-b grid'>
       {
         user && token ? (
           <div className='flex justify-between items-center md:pl-4 md:pr-6'>

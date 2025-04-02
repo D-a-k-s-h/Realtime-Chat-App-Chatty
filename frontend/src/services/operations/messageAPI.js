@@ -121,7 +121,7 @@ export function sendMessages(receiverId,formData,token){
             }
 
             console.log("RESPONSE WHILE SENDING MESSAGE -> ",response);
-            toast.success("Meesage sent");
+            toast.success("Message sent");
              
         } catch(error){
             console.log("ERROR WHILE SENDING MESSAGE -> ",error);
