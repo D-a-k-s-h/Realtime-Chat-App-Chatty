@@ -64,7 +64,7 @@ export function getAllUsers(token){
             toast.success("Users Fetched Successfully");
 
         } catch(error){
-            console.log("ERROR WHILE FETCHING USERS -> ",error);
+            console.log("ERROR WHILE FETCHING MESSAGES -> ",error);
             toast.error(error?.response?.data?.message);
         }
         toast.dismiss(toastId);
