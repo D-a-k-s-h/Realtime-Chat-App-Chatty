@@ -16,6 +16,7 @@ server.listen(PORT, () => {
     console.log(`Server connected to port = ${PORT}`);
 });
 
+
 app.use(
     cors({
         origin:"https://realtime-chat-app-chatty-li7x.onrender.com",
@@ -26,9 +27,6 @@ app.use(
 //to parse json data
 app.use(express.json());
 app.use(cookieParser());
-
-app.use('/api/v1/auth',auth);
-app.use('/api/v1/messages',messageRoutes);
 
 if(process.env.NODE_ENV === "production"){
     app.use(express.static(path.join(__dirname,'../frontend/dist')));
@@ -44,6 +42,9 @@ app.use(
         tempFileDir:'/tmp/'
     })
 )
+
+app.use('/api/v1/auth',auth);
+app.use('/api/v1/messages',messageRoutes);
 
 //connect to database
 dBConnect();

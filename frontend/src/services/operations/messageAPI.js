@@ -16,9 +16,9 @@ export function getMessages(receiverId,token){
         try{
             //In GET requests bodyData remains null therefore we send data in url only
             const response = await apiConnector(
-                "POST",
-                `${GET_MESSAGES_API}`,
-                {receiverId},
+                "GET",
+                `${GET_MESSAGES_API}?receiverId=${receiverId}`,
+                null,
                 {
                     Authorization:`Bearer ${token}`
                 }
@@ -30,7 +30,7 @@ export function getMessages(receiverId,token){
 
             console.log("RESPONSE WHILE FETCHING MESSAGES -> ",response);
             result = response?.data?.data
-            //toast.success("Messages Fetched Successfully")
+            toast.success("Messages Fetched Successfully")
 
         } catch(error){
             console.log("ERROR WHILE FETCHING MESSAGES -> ",error);
@@ -47,7 +47,7 @@ export function getAllUsers(token){
         let result = [];
         try{
             const response = await apiConnector(
-                "POST",
+                "GET",
                 GET_ALL_USERS_API,
                 null,
                 {
@@ -55,18 +55,16 @@ export function getAllUsers(token){
                 }
             )
 
-            console.log("GET_ALL_USERS_API -> ",GET_ALL_USERS_API);
-
             if(!response.data.success){
                 throw new Error(response?.data?.message);
             }
 
             console.log("RESPONSE WHILE FETCHING USERS -> ",response);
             result = response?.data?.data;
-            //toast.success("Users Fetched Successfully");
+            toast.success("Users Fetched Successfully");
 
         } catch(error){
-            console.log("ERROR WHILE FETCHING USERS -> ",error);
+            console.log("ERROR WHILE FETCHING MESSAGES -> ",error);
             toast.error(error?.response?.data?.message);
         }
         toast.dismiss(toastId);
@@ -80,9 +78,9 @@ export function getUserDetails(userId,token){
         const toastId = toast.loading("Loading...");
         try{
             const response = await apiConnector(
-                "GET",
-                `${GET_USER_DETAILS_API}?userId=${userId}`,
-                null,
+                "POST",
+                GET_USER_DETAILS_API,
+                {userId},
                 {
                     Authorization: `Bearer ${token}`
                 }
@@ -94,7 +92,7 @@ export function getUserDetails(userId,token){
             
             result = response?.data?.data;
             console.log("FETCH USERS DETAILS RESPONSE -> ",response);
-            //toast.success("Users details fetched successfully");
+            toast.success("Users details fetched successfully");
 
         } catch(error){
             console.log("ERROR WHILE FETCHING USERS DETAILS -> ",error);
@@ -114,7 +112,6 @@ export function sendMessages(receiverId,formData,token){
                 `${SEND_MESSAGES_API}?id=${receiverId}`,
                 formData,
                 {
-                    "Content-Type":"multipart/form-data",
                     Authorization: `Bearer ${token}`
                 }
             )

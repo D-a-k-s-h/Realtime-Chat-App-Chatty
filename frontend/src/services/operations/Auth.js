@@ -36,8 +36,6 @@ export function login(formData,navigate){
     return async(dispatch,getState) => {
         const toastId = toast.loading("Loading...");
         try{
-            console.log("formData -> ",formData.email);
-            console.log("formData -> ",formData.password);
             const response = await apiConnector("POST",LOGIN_API,formData);
 
             console.log("LOGIN RESPONSE -> ",response);

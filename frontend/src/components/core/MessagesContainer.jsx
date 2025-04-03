@@ -68,7 +68,7 @@ const MessagesContainer = () => {
       subscribeToMessages();
   
       return () => unsubscribeToMessages();
-    },[receiverId]);
+    },[receiverId,socket]);
   
     useEffect(() => {
       if(messageEndRef.current && messages){
