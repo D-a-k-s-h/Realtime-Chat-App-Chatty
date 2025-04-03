@@ -114,6 +114,7 @@ export function sendMessages(receiverId,formData,token){
                 `${SEND_MESSAGES_API}?id=${receiverId}`,
                 formData,
                 {
+                    "Content-Type":"multipart/form-data",
                     Authorization: `Bearer ${token}`
                 }
             )
