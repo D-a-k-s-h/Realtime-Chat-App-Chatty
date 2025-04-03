@@ -15,8 +15,8 @@ export function signUp(formData,navigate){
         try{
             const response = await apiConnector("POST",SIGNUP_API,formData);
 
-            if(!response.data.success){
-                throw new Error(response.data.message);
+            if(!response?.data?.success){
+                throw new Error(response?.data?.message);
             }
 
             toast.success("SignUp Successfull");

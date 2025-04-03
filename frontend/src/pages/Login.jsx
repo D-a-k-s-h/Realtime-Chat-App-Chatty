@@ -33,10 +33,10 @@ const Login = () => {
     setLoading(true);
     console.log("LOGIN DATA -> ",data);
 
-    const formData = {
-      email:data.email,
-      password:data.password
-    }
+    const formData = new FormData();
+
+    formData.append('email',data.email);
+    formData.append('password',data.password);
 
     await dispatch(login(formData,navigate));
     setLoading(false);
