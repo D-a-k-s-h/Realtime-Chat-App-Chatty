@@ -15,20 +15,18 @@ const Sidebar = () => {
   const navigate = useNavigate();
   const [showOnlineUsers,setShowOnlineUsers] = useState(false);
 
-  useEffect(() => {
-
-    const fetchUsers = async() => {
-      setLoading(true);
-      const result = await dispatch(getAllUsers(token));
-      if(result){
-        setUsers(result);
-      }
-      setLoading(false);
+  const fetchUsers = async() => {
+    setLoading(true);
+    const result = await dispatch(getAllUsers(token));
+    if(result){
+      setUsers(result);
     }
+    setLoading(false);
+  }
 
+  useEffect(() => {
     fetchUsers();
-
-  },[]);
+  },[fetchUsers]);
 
   const filteredUsers = showOnlineUsers ? users.filter(user => onlineUsers.includes(user?._id)) : users;
 
