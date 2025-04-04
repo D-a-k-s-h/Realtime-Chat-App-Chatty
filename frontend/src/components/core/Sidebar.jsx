@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getAllUsers } from '../../services/operations/messageAPI';
 import { LuUsers } from 'react-icons/lu';
 import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 const Sidebar = () => {
 
@@ -17,16 +18,23 @@ const Sidebar = () => {
 
   const fetchUsers = async() => {
     setLoading(true);
-    const result = await dispatch(getAllUsers(token));
-    if(result){
-      setUsers(result);
+    try{
+      const actionResult = await dispatch(getAllUsers(token));
+      const result = actionResult.payload; // Assuming the result is in the payload
+      if (result) {
+        setUsers(result);
+      }
+
+    } catch(error){
+      console.log(error);
+      toast.error(error.message);
     }
     setLoading(false);
   }
 
   useEffect(() => {
     fetchUsers();
-  },[fetchUsers]);
+  },[]);
 
   const filteredUsers = showOnlineUsers ? users.filter(user => onlineUsers.includes(user?._id)) : users;
 
