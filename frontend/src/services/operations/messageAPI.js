@@ -16,9 +16,9 @@ export function getMessages(receiverId,token){
         try{
             //In GET requests bodyData remains null therefore we send data in url only
             const response = await apiConnector(
-                "GET",
-                `${GET_MESSAGES_API}?receiverId=${receiverId}`,
-                null,
+                "POST",
+                GET_MESSAGES_API,
+                {receiverId},
                 {
                     Authorization:`Bearer ${token}`
                 }
@@ -47,7 +47,7 @@ export function getAllUsers(token){
         let result = [];
         try{
             const response = await apiConnector(
-                "GET",
+                "POST",
                 GET_ALL_USERS_API,
                 null,
                 {

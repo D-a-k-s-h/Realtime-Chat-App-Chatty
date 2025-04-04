@@ -36,7 +36,7 @@ exports.getMessages = async(req,res) => {
     try{
         const senderId = req.user.userId;
 
-        const {receiverId:receiverId} = req.query;
+        const {receiverId} = req.body;
         //console.log("ReceiverId",receiverId);
 
         if(!receiverId){
@@ -119,7 +119,7 @@ exports.sendMessage = async(req,res) => {
             })
         }
 
-        //TODO: real time functionality
+        //Real time functionality
         const receiverSocketId = getReceiverSocketId(receiverId);
         if(receiverSocketId){
             io.to(receiverSocketId).emit("newMessage",createMessage);

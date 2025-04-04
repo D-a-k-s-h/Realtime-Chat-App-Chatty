@@ -16,10 +16,10 @@ const Sidebar = () => {
   const navigate = useNavigate();
   const [showOnlineUsers,setShowOnlineUsers] = useState(false);
 
-  const fetchUsers = () => {
+  const fetchUsers = async() => {
     setLoading(true);
     try{
-      const result = dispatch(getAllUsers(token));
+      const result = await dispatch(getAllUsers(token));
       if (result) {
         setUsers(result);
       }
