@@ -10,7 +10,7 @@ const MessagesContainer = () => {
   
   const {user} = useSelector((state) => state.auth);
   const {messages} = useSelector((state) => state.message);
-  console.log("Messages -> ",messages);
+  //console.log("Messages -> ",messages);
   const {userDetails} = useSelector((state) => state.users);
   const messageEndRef = useRef();
   const dispatch = useDispatch();
@@ -50,7 +50,7 @@ const MessagesContainer = () => {
         }
   
         dispatch(updateMessages(newMessage));
-        console.log("newMessage -> ",messages);
+        console.log("newMessage -> ",newMessage);
       })
     }
   
