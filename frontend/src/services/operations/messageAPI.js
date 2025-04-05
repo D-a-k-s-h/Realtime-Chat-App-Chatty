@@ -1,6 +1,7 @@
 import toast from "react-hot-toast";
 import { messagesEndPoints } from "../apis";
 import { apiConnector } from "../apiConnector";
+import { updateMessages } from "../../slices/messageSlice";
 
 const {
     GET_MESSAGES_API,
