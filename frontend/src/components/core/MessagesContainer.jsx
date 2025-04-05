@@ -5,6 +5,7 @@ import { setMessages, updateMessages } from '../../slices/messageSlice';
 import { getMessages, getUserDetails } from '../../services/operations/messageAPI';
 import { setUsersDetails } from '../../slices/UsersSlice';
 import { useLocation, useParams } from 'react-router-dom';
+import MessageSkeleton from '../../skeletons/MessageSkeleton';
 
 const MessagesContainer = () => {
   
@@ -77,34 +78,42 @@ const MessagesContainer = () => {
     },[messages]);
 
   return (
-    <div className='w-full h-full flex flex-col overflow-auto p-4'>
+    <>
       {
-        messages && messages.map((message) => (
-          <div key={message?._id} className={`chat ${message?.senderId === user?._id ? 'chat-end' : 'chat-start'}`} ref={messageEndRef}>
-            <div className='chat-image avatar'>
-              <div className='size-10 rounded-full border'>
-                <img src={`${message?.senderId === user?._id ? user?.profilePic : userDetails?.profilePic}`} alt='profilePic'/>
-              </div>
-            </div>
-            <div className='chat-header mb-1'>
-              <time className='text-xs opacity-50 ml-1'>
-                {formatTime(message?.createdAt)}
-              </time>
-            </div>
-            <div className='chat-bubble rounded-xl'>
-              {
-                message.image && (
-                  <img src={message?.image} alt='attachment' className='max-w-[200px] rounded-md mb-2'/>
-                )
-              }
-              {
-                message?.text && (<p>{message?.text}</p>)
-              }
-            </div>
+        loading ? (
+          <MessageSkeleton/>
+        ) : (
+          <div className='w-full h-full flex flex-col overflow-auto p-4'>
+            {
+              messages && messages.map((message) => (
+                <div key={message?._id} className={`chat ${message?.senderId === user?._id ? 'chat-end' : 'chat-start'}`} ref={messageEndRef}>
+                  <div className='chat-image avatar'>
+                    <div className='size-10 rounded-full border'>
+                      <img src={`${message?.senderId === user?._id ? user?.profilePic : userDetails?.profilePic}`} alt='profilePic'/>
+                    </div>
+                  </div>
+                  <div className='chat-header mb-1'>
+                    <time className='text-xs opacity-50 ml-1'>
+                      {formatTime(message?.createdAt)}
+                    </time>
+                  </div>
+                  <div className='chat-bubble rounded-xl'>
+                    {
+                      message.image && (
+                        <img src={message?.image} alt='attachement' className='max-w-[200px] rounded-md mb-2'/>
+                      )
+                    }
+                    {
+                      message?.text && (<p>{message?.text}</p>)
+                    }
+                  </div>
+                </div>
+              ))
+            }
           </div>
-        ))
+        )
       }
-    </div>
+    </>
   )
 }
 
