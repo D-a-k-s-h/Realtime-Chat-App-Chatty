@@ -104,7 +104,7 @@ export function getUserDetails(userId,token){
 }
 
 export function sendMessages(receiverId,formData,token){
-    return async() => {
+    return async(dispatch) => {
         const toastId = toast.loading("Loading...");
         try{
             const response = await apiConnector(
@@ -122,6 +122,8 @@ export function sendMessages(receiverId,formData,token){
             }
 
             console.log("RESPONSE WHILE SENDING MESSAGE -> ",response);
+            const result = response?.data?.data;
+            dispatch(updateMessages(result));
             //toast.success("Message sent");
              
         } catch(error){

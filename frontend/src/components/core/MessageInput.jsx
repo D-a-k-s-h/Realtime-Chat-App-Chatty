@@ -61,9 +61,9 @@ const MessageInput = () => {
     }
 
     await dispatch(sendMessages(receiverId,formData,token));
-    const response = await dispatch(getMessages(receiverId,token));
-    //console.log("New Messages -> ",response);
-    dispatch(setMessages(response));
+    // const response = await dispatch(getMessages(receiverId,token));
+    // console.log("New Messages -> ",response);
+    // dispatch(setMessages(response));
     
     setPreviewSource(null);
     setImage(null);
