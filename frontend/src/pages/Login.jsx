@@ -31,7 +31,7 @@ const Login = () => {
   const submitHandler = async(data) => {
     setButtonLoading(true);
     setLoading(true);
-    console.log("LOGIN DATA -> ",data);
+    //console.log("LOGIN DATA -> ",data);
 
     const formData = new FormData();
 
@@ -95,12 +95,12 @@ const Login = () => {
                   }
                 </div>
 
-                <button type='submit' disabled={loading} className='w-full btn btn-primary p-2 rounded-md font-semibold cursor-pointer'>{buttonLoading ? 'Loading...' : 'Login'}</button>
+                <button type='submit' disabled={buttonLoading} className='w-full btn btn-primary p-2 rounded-md font-semibold cursor-pointer'>{buttonLoading ? 'Loading...' : 'Login'}</button>
                 <p className='text-center mt-4'>Don't have an account? <Link to={"/signup"} className='underline'>Create account</Link></p>
               </form>
             </div>
 
-            {/* ADVERTISING PART */}
+            {/* DESIGN PART */}
             <div className='w-full h-full bg-base-200 hidden sm:flex flex-col gap-3 justify-center items-center p-3'>
               <Design/>
               <p className='text-2xl font-semibold'>Welcome Back!</p>

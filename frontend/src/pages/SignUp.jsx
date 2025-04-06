@@ -34,7 +34,6 @@ const SignUp = () => {
   const{
     register,
     handleSubmit,
-    reset,
     formState:{errors}
   } = useForm();
 
@@ -144,7 +143,7 @@ const SignUp = () => {
                   </div>
                 </div>
 
-                <button type='submit' disabled={loading} className='w-full btn btn-primary rounded-md p-2 font-semibold cursor-pointer'>{buttonLoading ? 'Loading...' : 'Create Account'}</button>
+                <button type='submit' disabled={buttonLoading} className='w-full btn btn-primary rounded-md p-2 font-semibold cursor-pointer'>{buttonLoading ? 'Loading...' : 'Create Account'}</button>
                 <p className='text-center mt-4'>Already have an account? <Link to={"/login"} className='underline'>Login</Link></p>
               </form>
             </div>

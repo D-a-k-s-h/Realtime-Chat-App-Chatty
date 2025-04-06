@@ -12,7 +12,7 @@ const Sidebar = () => {
   const {token} = useSelector((state) => state.auth);
   const [users,setUsers] = useState([]);
   const {onlineUsers} = useSelector((state) => state.users);
-  console.log("Online users -> ",onlineUsers);
+  //console.log("Online users -> ",onlineUsers);
   const [loading,setLoading] = useState(false);
   const navigate = useNavigate();
   const [showOnlineUsers,setShowOnlineUsers] = useState(false);
@@ -58,7 +58,10 @@ const Sidebar = () => {
                     className='checkbox checkbox-md'
                     onChange={() => setShowOnlineUsers(!showOnlineUsers)}
                   />
-                  <div className='md:flex flex-col md:flex-row md:gap-1 hidden'>Show online only <p className='text-gray-500'>({`${onlineUsers?.length-1} online`})</p></div>
+                  <div className='sm:flex flex-row hidden gap-2'>
+                    <p>Show online users</p>
+                    <p className='text-gray-500'>({`${onlineUsers?.length-1} online`})</p>
+                  </div>
                 </label>
               </div>
             </div>

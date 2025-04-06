@@ -19,7 +19,7 @@ const ProfilePage = () => {
   const dispatch = useDispatch();
   const [image,setImage] = useState(null);
 
-  console.log("USER -> ",user);
+  //console.log("USER -> ",user);
 
   const updatePicture = async() => {
     setLoading(true);
@@ -48,8 +48,8 @@ const ProfilePage = () => {
   }
 
   return (
-    <div className='w-screen h-screen my-4 flex flex-col gap-4 items-center justify-center'>
-      <div className='sm:w-4/12 bg-base-300/70 flex flex-col gap-5 items-center justify-center rounded-lg px-5 py-4'>
+    <div className='w-screen h-full sm:h-screen sm:my-4 flex flex-col mt-10 gap-4 items-center justify-center'>
+      <div className='w-full sm:w-11/12 md:w-4/12 bg-base-300/70 flex flex-col gap-5 items-center justify-center rounded-lg px-5 py-4'>
         <div className='w-full flex flex-col gap-2 justify-center items-center'>
           <p className='text-2xl font-semibold'>Profile</p>
           <p>Your profile information</p>
@@ -57,7 +57,7 @@ const ProfilePage = () => {
         <div className='w-full relative flex flex-col gap-3 items-center justify-center'>
           <img className='aspect-square rounded-full border-2 w-36 object-cover' src={previewSource || user?.profilePic} alt='userImage'/>
           <p>{loading ? 'Loading...' : 'Click the camera icon to update your photo'}</p>
-          <label htmlFor='profileImage'>
+          <label htmlFor='profileImage' className=''>
             <input
               name='profileImage'
               id='profileImage'
@@ -66,9 +66,9 @@ const ProfilePage = () => {
               className='hidden'
               onChange={handlePreview}
             />
-            <p className={!loading ? 'absolute p-3 btn btn-primary top-25 right-40 rounded-full text-xl cursor-pointer' : 'hidden'}>{previewSource ? <CiUndo onClick={() => setPreviewSource(null)}/> : <MdOutlineCameraAlt/>}</p>
+            <p className={!loading ? 'absolute p-3 btn btn-primary top-28 right-32 md:top-25 md:right-41 rounded-full text-xl cursor-pointer' : 'hidden'}>{previewSource ? <CiUndo onClick={() => setPreviewSource(null)}/> : <MdOutlineCameraAlt/>}</p>
           </label>
-          <p className={previewSource ? 'absolute p-3 btn btn-primary top-25 right-24 cursor-pointer rounded-full text-xl opacity-0 animate-slide-in' : 'hidden'} onClick={updatePicture}><FiUpload/></p>
+          <p className={previewSource ? 'absolute p-3 btn btn-primary top-28 right-18 md:top-25 md:right-24 cursor-pointer rounded-full text-xl opacity-0 animate-slide-in' : 'hidden'} onClick={updatePicture}><FiUpload/></p>
         </div>
         <div className='flex flex-col justify-center items-center gap-3 w-full'>
           <div className='w-full relative flex flex-col'>
@@ -95,7 +95,7 @@ const ProfilePage = () => {
           </div>
         </div>
       </div>
-      <div className='sm:w-4/12 bg-base-300/70 flex flex-col gap-5 items-start justify-center rounded-lg px-5 py-4'>
+      <div className='w-full sm:w-11/12 md:w-4/12 bg-base-300/70 flex flex-col gap-5 items-start justify-center rounded-lg px-5 py-4'>
         <p className='font-semibold text-lg'>Account information</p>
         <div className='w-full flex flex-col'>
           <div className='w-full flex flex-row gap-10 md:gap-20 justify-between border-b pb-3'>
