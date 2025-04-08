@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import './App.css'
 import Navbar from './components/common/Navbar'
-import { Navigate, Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
 import Home from './pages/Home'
 import SignUp from './pages/SignUp'
 import Settings from './pages/Settings'
@@ -18,12 +18,20 @@ const App = () => {
   const {user} = useSelector((state) => state.auth);
   const {theme} = useSelector((state) => state.theme);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if(user){
       dispatch((dispatch,getState) => connectSocket(dispatch,getState));
     }
   },[dispatch,user]);
+
+
+  useEffect(() => {
+    if(user?._id === undefined){
+      dispatch(logout(navigate));
+    }
+  },[]);
 
   return (
     <div className='w-screen min-h-screen flex flex-col' data-theme={theme}>
