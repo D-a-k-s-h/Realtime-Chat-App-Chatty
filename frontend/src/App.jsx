@@ -12,6 +12,7 @@ import Error from './pages/Error'
 import WelcomePage from './components/core/WelcomePage'
 import ChatContainer from './components/core/ChatContainer'
 import { connectSocket } from './utils/connectSocket'
+import { logout } from './services/operations/Auth'
 
 const App = () => {
 
