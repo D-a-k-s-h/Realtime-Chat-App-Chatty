@@ -102,7 +102,7 @@ const MessagesContainer = () => {
                   <div className='chat-bubble rounded-xl'>
                     {
                       message.image && (
-                        <img src={message?.image} alt='attachement' className='w-full rounded-md mb-2'/>
+                        <img src={message?.image} alt='attachement' className='w-full max-w-[200px] rounded-md mb-2'/>
                       )
                     }
                     {
