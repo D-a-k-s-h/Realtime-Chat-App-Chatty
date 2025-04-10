@@ -21,27 +21,27 @@ const Navbar = () => {
     <div className='h-14 border-b grid'>
       {
         user && token ? (
-          <div className='flex justify-between items-center md:pl-4 md:pr-6'>
+          <div className='flex justify-between items-center px-2 md:pl-4 md:pr-6'>
             <div>
               <Link to={"/"} className='cursor-pointer'>
                 <p className='flex items-center gap-2 font-bold'><button className=' p-2 rounded-md bg-base-300'><CiChat1 className='text-lg'/></button> Chatty</p>
               </Link>
             </div>
-            <div className='sm:hidden text-xl'>
-              <p className='btn' tabIndex={0} onClick={() => setIsVisible(!isVisible)}><CiMenuKebab/></p>
-              <ul tabIndex={0} className={`absolute right-2 top-15 z-[1000] bg-base-200 rounded-lg flex items-center gap-2 md:gap-4 menu ${isVisible ? 'block' : 'hidden'}`}>
+            <div className='relative group sm:hidden text-xl'>
+              <div className='btn' onClick={() => setIsVisible(!isVisible)}><CiMenuKebab/></div>
+              <ul className={`absolute opacity-0 right-2 top-10 z-[1000] bg-base-200 rounded-lg flex items-center gap-2 md:gap-4 menu invisible group-hover:visible group-hover:opacity-100`}>
                 <li>
                   <Link to={"/settings"}>
-                    <button type='button' className='flex items-center gap-2 font-medium hover:bg-base-300 transition-all duration-200 rounded-md p-1 cursor-pointer'><IoSettingsOutline/> Settings</button>
+                    <button type='button' className='flex items-center gap-2 btn btn-md'><IoSettingsOutline/> Settings</button>
                   </Link>
                 </li>
                 <li>
                   <Link to={"/profile"}>
-                    <button type='button' className='flex items-center gap-2 font-medium hover:bg-base-300 transition-all duration-200 rounded-md p-1 cursor-pointer'><GoPerson/> Profile</button>
+                    <button type='button' className='flex items-center gap-2 btn btn-md'><GoPerson/> Profile</button>
                   </Link>
                 </li>
                 <li>
-                  <button type='button' onClick={() => dispatch(logout(navigate))} className='flex items-center gap-2 font-medium hover:bg-base-300 transition-all duration-200 rounded-md p-1 cursor-pointer'><FiLogOut/>Logout</button>
+                  <button type='button' onClick={() => dispatch(logout(navigate))} className='flex items-center btn btn-error'><FiLogOut/>Logout</button>
                 </li>
               </ul>
             </div>
