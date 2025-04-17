@@ -66,7 +66,7 @@ const ProfilePage = () => {
               className='hidden'
               onChange={handlePreview}
             />
-            <p className={!loading ? 'absolute p-3 btn btn-primary top-28 right-32 md:top-25 md:right-41 rounded-full text-xl cursor-pointer' : 'hidden'}>{previewSource ? <CiUndo onClick={() => setPreviewSource(null)}/> : <MdOutlineCameraAlt/>}</p>
+            <p className={!loading ? 'absolute p-3 btn btn-primary top-28 right-34 md:top-25 md:right-41 rounded-full text-xl cursor-pointer' : 'hidden'}>{previewSource ? <CiUndo onClick={() => setPreviewSource(null)}/> : <MdOutlineCameraAlt/>}</p>
           </label>
           <p className={previewSource ? 'absolute p-3 btn btn-primary top-28 right-18 md:top-25 md:right-24 cursor-pointer rounded-full text-xl opacity-0 animate-slide-in' : 'hidden'} onClick={updatePicture}><FiUpload/></p>
         </div>
