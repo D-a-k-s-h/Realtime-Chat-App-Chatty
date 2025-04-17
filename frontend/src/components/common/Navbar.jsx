@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { CiChat1 } from "react-icons/ci";
 import { IoSettingsOutline } from "react-icons/io5";
@@ -16,6 +16,21 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isVisible,setIsVisible] = useState(false);
+  const menuRef = useRef(null);
+
+  //handles click outside for dropdown
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if(menuRef.current && !menuRef.current.contains(event.target)){
+        setIsVisible(false);
+      }
+    }
+
+    document.addEventListener("mousedown",handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown",handleClickOutside);
+    }
+  },[]);
 
   return (
     <div className='h-14 border-b grid'>
@@ -27,23 +42,27 @@ const Navbar = () => {
                 <p className='flex items-center gap-2 font-bold'><button className=' p-2 rounded-md bg-base-300'><CiChat1 className='text-lg'/></button> Chatty</p>
               </Link>
             </div>
-            <div className='relative group sm:hidden text-xl'>
-              <div className='btn' onClick={() => setIsVisible(!isVisible)}><CiMenuKebab/></div>
-              <ul className={`absolute opacity-0 right-2 top-10 z-[1000] bg-base-200 rounded-lg flex items-center gap-2 md:gap-4 menu invisible group-hover:visible group-hover:opacity-100`}>
-                <li>
-                  <Link to={"/settings"}>
-                    <button type='button' className='flex items-center gap-2 btn btn-md'><IoSettingsOutline/> Settings</button>
-                  </Link>
-                </li>
-                <li>
-                  <Link to={"/profile"}>
-                    <button type='button' className='flex items-center gap-2 btn btn-md'><GoPerson/> Profile</button>
-                  </Link>
-                </li>
-                <li>
-                  <button type='button' onClick={() => dispatch(logout(navigate))} className='flex items-center btn btn-error'><FiLogOut/>Logout</button>
-                </li>
-              </ul>
+            <div className='relative block sm:hidden cursor-pointer text-xl' ref={menuRef}>
+              <CiMenuKebab onClick={() => setIsVisible(!isVisible)}/>
+              {
+                isVisible && (
+                  <ul className={`absolute right-2 top-7 z-[1000] bg-base-200 rounded-lg flex items-center gap-2 md:gap-4 menu transition-all duration-200`}>
+                    <li>
+                      <Link to={"/settings"}>
+                        <button type='button' className='flex items-center gap-2 btn btn-md'><IoSettingsOutline/> Settings</button>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to={"/profile"}>
+                        <button type='button' className='flex items-center gap-2 btn btn-md'><GoPerson/> Profile</button>
+                      </Link>
+                    </li>
+                    <li>
+                      <button type='button' onClick={() => dispatch(logout(navigate))} className='flex items-center btn btn-error'><FiLogOut/>Logout</button>
+                    </li>
+                  </ul>
+                )
+              }
             </div>
             <div className='hidden sm:block'>
               <ul className='flex items-center gap-2 md:gap-4'>
